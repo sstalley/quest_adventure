@@ -1,4 +1,5 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 game_name = "Quest Adventure"
 print(f"Welcome to {game_name}")
@@ -8,26 +9,26 @@ print(f"Welcome {name} to {game_name}!")
 
 #The Locations in our Adventure
 locations = [
-"Mills End Park",
-"Hwy 26 Tunnel",
-"Hillboro Stadium",
-"The 7 layers of the gumdrop forest",
-"Seaside",
-"Hawaii",
-"Taiwan",
-"Mongolia"]
+"Park",
+"Tunnel",
+"Suburubs",
+"Ocean"]
 
-distance_from_start = [0, 2, 6, 10, 20, 100, 200, 250]
+temperatures = [[70.0, 40.0, 85.5],
+                [20,     65,   85],
+                [80,     40,   50]]
 
-temperatures = [
-70.0,
-40.0,
-85.5,
-20,
-65,
-85,
-80,
-40]
+
+lmap = np.array([[0, 1, 1], [2, 2, 2],[3,3,3]])
+
+for row in lmap:
+    for place in row:
+        print(f"you are at {locations[place]}")
+    print("")
+
+
+#distance_from_start = [0, 2, 6, 10, 20, 100, 200, 250]
+
 
 def graph_temps():
     plt.title("Temperatures of Quest Adventure")
@@ -36,7 +37,7 @@ def graph_temps():
     plt.ylabel("Temperature (F)")
     plt.show()
 
-player_location = 0
+player_location = [0, 0]
 
 answer = ""
 
@@ -54,12 +55,19 @@ def move_player(answer, player_location):
     if "l" in answer.lower():
         print("you want to go left")
         #player_location = player_location + 1
-        player_location += 1
+        player_location[0] += 1
     elif "r" in answer.lower():
         print("you want to go right")
-        player_location -= 1
+        player_location[0] -= 1
+    if "u" in answer.lower():
+        print("you want to go up")
+        #player_location = player_location + 1
+        player_location[1] += 1
+    elif "d" in answer.lower():
+        print("you want to go down")
+        player_location[1] -= 1
     else:
-        print("Not Left or Right so i'm confused like MUSC")
+        print("Not i'm confused like MUSC")
 
     if player_location < 0:
         print("nice try :P")
@@ -71,7 +79,9 @@ def chill(player_location):
     temperatures[player_location] = temperatures[player_location] - 50
 
 
-while player_location < len(locations)-1: #"l" not in answer.lower() and "r" not in answer.lower():
+print(lmap[player_location])
+
+while lmap[player_location] != 3: #"l" not in answer.lower() and "r" not in answer.lower():
 
     answer = print_the_stuff_i_want()
 
