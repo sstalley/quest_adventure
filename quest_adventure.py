@@ -29,19 +29,16 @@ temperatures = [
 80,
 40]
 
-plt.title("Temperatures of Quest Adventure")
-plt.plot(distance_from_start, temperatures, color="r")
-plt.xlabel("location index")
-plt.ylabel("Temperature (F)")
-plt.show()
+def graph_temps():
+    plt.title("Temperatures of Quest Adventure")
+    plt.plot(distance_from_start, temperatures, color="r")
+    plt.xlabel("location index")
+    plt.ylabel("Temperature (F)")
+    plt.show()
 
 player_location = 0
 
 answer = ""
-
-print("The locations are:")
-for location in locations:
-    pass
 
 def print_the_stuff_i_want():
     current_temp = temperatures[player_location]
@@ -70,13 +67,19 @@ def move_player(answer, player_location):
 
     return player_location
 
+def chill(player_location):
+    temperatures[player_location] = temperatures[player_location] - 50
 
 
 while player_location < len(locations)-1: #"l" not in answer.lower() and "r" not in answer.lower():
 
     answer = print_the_stuff_i_want()
 
-    player_location = move_player(answer, player_location)
-
+    if "c" in answer.lower():
+        chill(player_location)
+    if "v" in answer.lower():
+        graph_temps()
+    else:
+        player_location = move_player(answer, player_location)
 
 print("YOU WIN")
