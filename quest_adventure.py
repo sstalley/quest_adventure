@@ -1,3 +1,4 @@
+import matplotlib.pyplot as plt
 
 game_name = "Quest Adventure"
 print(f"Welcome to {game_name}")
@@ -16,6 +17,8 @@ locations = [
 "Taiwan",
 "Mongolia"]
 
+distance_from_start = [0, 2, 6, 10, 20, 100, 200, 250]
+
 temperatures = [
 70.0,
 40.0,
@@ -25,6 +28,12 @@ temperatures = [
 85,
 80,
 40]
+
+plt.title("Temperatures of Quest Adventure")
+plt.plot(distance_from_start, temperatures, color="r")
+plt.xlabel("location index")
+plt.ylabel("Temperature (F)")
+plt.show()
 
 player_location = 0
 
@@ -38,7 +47,9 @@ while player_location < len(locations)-1: #"l" not in answer.lower() and "r" not
 
     current_temp = temperatures[player_location]
     current_location = locations[player_location]
+    current_dist = distance_from_start[player_location]
     print(f"the temperature is {current_temp}")
+    print(f"You are {current_dist} miles from home")
     answer = input(f"You are at {current_location}. which way would you like to go (L/R)?")
     print(f"you entered {answer}")
 
