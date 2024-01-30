@@ -43,16 +43,17 @@ print("The locations are:")
 for location in locations:
     pass
 
-while player_location < len(locations)-1: #"l" not in answer.lower() and "r" not in answer.lower():
-
+def print_the_stuff_i_want():
     current_temp = temperatures[player_location]
     current_location = locations[player_location]
     current_dist = distance_from_start[player_location]
     print(f"the temperature is {current_temp}")
     print(f"You are {current_dist} miles from home")
-    answer = input(f"You are at {current_location}. which way would you like to go (L/R)?")
-    print(f"you entered {answer}")
+    local_answer = input(f"You are at {current_location}. which way would you like to go (L/R)?")
+    print(f"you entered {local_answer}")
+    return local_answer
 
+def move_player(answer, player_location):
     if "l" in answer.lower():
         print("you want to go left")
         #player_location = player_location + 1
@@ -67,11 +68,15 @@ while player_location < len(locations)-1: #"l" not in answer.lower() and "r" not
         print("nice try :P")
         player_location = 0
 
+    return player_location
+
+
+
+while player_location < len(locations)-1: #"l" not in answer.lower() and "r" not in answer.lower():
+
+    answer = print_the_stuff_i_want()
+
+    player_location = move_player(answer, player_location)
+
+
 print("YOU WIN")
-
-
-
-
-#if yes then go to show and have a good time
-
-#if not then be bored
