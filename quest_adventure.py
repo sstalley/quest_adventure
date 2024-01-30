@@ -16,6 +16,16 @@ locations = [
 "Taiwan",
 "Mongolia"]
 
+temperatures = [
+70.0,
+40.0,
+85.5,
+20,
+65,
+85,
+80,
+40]
+
 player_location = 0
 
 answer = ""
@@ -26,7 +36,9 @@ for location in locations:
 
 while player_location < len(locations)-1: #"l" not in answer.lower() and "r" not in answer.lower():
 
+    current_temp = temperatures[player_location]
     current_location = locations[player_location]
+    print(f"the temperature is {current_temp}")
     answer = input(f"You are at {current_location}. which way would you like to go (L/R)?")
     print(f"you entered {answer}")
 
