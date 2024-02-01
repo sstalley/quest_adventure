@@ -84,7 +84,7 @@ def move_player(answer, player_location):
     return player_location
 
 def chill(player_location):
-    temperatures[player_location] = temperatures[player_location] - 50
+    temperatures[player_location[0]][player_location[1]] = temperatures[player_location[0]][player_location[1]] - 50
 
 while "x" not in answer.lower(): #"l" not in answer.lower() and "r" not in answer.lower():
 
