@@ -1,4 +1,4 @@
-# import matplotlib.pyplot as plt
+import matplotlib.pyplot as plt
 import numpy as np
 
 game_name = "Quest Adventure"
@@ -21,34 +21,28 @@ temperatures = [[70.0, 40.0, 85.5],
 
 lmap = np.array([[0, 1, 1], [2, 2, 2],[3,3,3]])
 
-for row in lmap:
-    for place in row:
-        print(f"you are at {locations[place]}")
-    print("")
-
-
-#distance_from_start = [0, 2, 6, 10, 20, 100, 200, 250]
-
 
 def graph_temps():
-    pass
-#    plt.title("Temperatures of Quest Adventure")
-#    plt.plot(distance_from_start, temperatures, color="r")
-#    plt.xlabel("location index")
-#    plt.ylabel("Temperature (F)")
-#    plt.show()
+    plt.title("Temperatures of Quest Adventure")
+    plt.plot(distance_from_start, temperatures, color="r")
+    plt.xlabel("location index")
+    plt.ylabel("Temperature (F)")
+    plt.show()
 
 player_location = [0, 0]
 
 answer = ""
 
 def print_the_stuff_i_want():
-    current_temp = temperatures[player_location]
-    current_location = locations[player_location]
-    current_dist = distance_from_start[player_location]
+    locx = player_location[0]
+    locy = player_location[1]
+    # print(f"locx:{locx} locy{locy}")
+    current_temp = temperatures[locx][locy]
+    current_location = locations[lmap[locx][locy]]
+    #current_dist = distance_from_start[locx][locy]
     print(f"the temperature is {current_temp}")
-    print(f"You are {current_dist} miles from home")
-    local_answer = input(f"You are at {current_location}. which way would you like to go (L/R)?")
+    #print(f"You are {current_dist} miles from home")
+    local_answer = input(f"You are at {current_location}. which way would you like to go (L/R/U/D)?")
     print(f"you entered {local_answer}")
     return local_answer
 
@@ -70,19 +64,29 @@ def move_player(answer, player_location):
     else:
         print("Not i'm confused like MUSC")
 
-    if player_location < 0:
-        print("nice try :P")
-        player_location = 0
+    if player_location[0] < 0:
+        print("Collision: REDGE")
+        player_location[0] = 0
+
+    if player_location[1] < 0:
+        print("Collision: DEDGE")
+        player_location[1] = 0
+
+    if player_location[0] >= lmap.shape[0]:
+        print("Collision: LEDGE")
+        player_location[0] = lmap.shape[0] - 1
+
+    if player_location[1] >= lmap.shape[1]:
+        print("Collision: UEDGE")
+        player_location[1] = lmap.shape[1] - 1
+
 
     return player_location
 
 def chill(player_location):
     temperatures[player_location] = temperatures[player_location] - 50
 
-
-print(lmap[player_location])
-
-while lmap[player_location] != 3: #"l" not in answer.lower() and "r" not in answer.lower():
+while "x" not in answer.lower(): #"l" not in answer.lower() and "r" not in answer.lower():
 
     answer = print_the_stuff_i_want()
 
