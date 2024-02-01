@@ -14,13 +14,17 @@ locations = [
 "Suburubs",
 "Ocean"]
 
-temperatures = [[70.0, 40.0, 85.5],
-                [20,     65,   85],
-                [80,     40,   50]]
+#temperatures = [[70.0, 40.0, 85.5],
+#                [20,     65,   85],
+#                [80,     40,   50]]
+#
+#np.save("temps.npy", temperatures)
+temperatures = np.load("temps.npy")
 
 
-lmap = np.array([[0, 1, 1], [2, 2, 2],[3,3,3]])
-
+#lmap = np.array([[0, 1, 1], [2, 2, 2],[3,3,3]])
+#np.save("world.npy", lmap)
+lmap = np.load("world.npy")
 
 def graph_temps():
     plt.title("Temperatures of Quest Adventure")
@@ -44,6 +48,7 @@ def print_the_stuff_i_want():
     #print(f"You are {current_dist} miles from home")
     local_answer = input(f"You are at {current_location}. which way would you like to go (L/R/U/D)?")
     print(f"you entered {local_answer}")
+
     return local_answer
 
 def move_player(answer, player_location):
@@ -80,7 +85,6 @@ def move_player(answer, player_location):
         print("Collision: UEDGE")
         player_location[1] = lmap.shape[1] - 1
 
-
     return player_location
 
 def chill(player_location):
@@ -92,7 +96,7 @@ while "x" not in answer.lower(): #"l" not in answer.lower() and "r" not in answe
 
     if "c" in answer.lower():
         chill(player_location)
-    if "v" in answer.lower():
+    elif "v" in answer.lower():
         graph_temps()
     else:
         player_location = move_player(answer, player_location)
