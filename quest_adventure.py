@@ -1,4 +1,4 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 
 game_name = "Quest Adventure"
@@ -31,11 +31,12 @@ for row in lmap:
 
 
 def graph_temps():
-    plt.title("Temperatures of Quest Adventure")
-    plt.plot(distance_from_start, temperatures, color="r")
-    plt.xlabel("location index")
-    plt.ylabel("Temperature (F)")
-    plt.show()
+    pass
+#    plt.title("Temperatures of Quest Adventure")
+#    plt.plot(distance_from_start, temperatures, color="r")
+#    plt.xlabel("location index")
+#    plt.ylabel("Temperature (F)")
+#    plt.show()
 
 player_location = [0, 0]
 
