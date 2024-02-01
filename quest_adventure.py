@@ -98,3 +98,8 @@ while "x" not in answer.lower(): #"l" not in answer.lower() and "r" not in answe
         player_location = move_player(answer, player_location)
 
 print("YOU WIN")
+
+temp_mean = np.mean(temperatures)
+print(f"AVG_TEMP: {temp_mean:.1f} F")
+std_dev = np.std(temperatures)
+print(f"STD_DEV: {std_dev:.1f} F")
