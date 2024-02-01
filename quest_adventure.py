@@ -4,7 +4,7 @@ import numpy as np
 game_name = "Quest Adventure"
 print(f"Welcome to {game_name}")
 #name = input("Enter Player Name: ")
-name = "Snean"
+name = "MUSC"
 print(f"Welcome {name} to {game_name}!")
 
 #The Locations in our Adventure
