@@ -60,15 +60,13 @@ def move_player(answer, player_location):
     elif "r" in answer.lower():
         print("you want to go right")
         player_location[0] -= 1
-    if "u" in answer.lower():
+    elif "u" in answer.lower():
         print("you want to go up")
         #player_location = player_location + 1
         player_location[1] += 1
     elif "d" in answer.lower():
         print("you want to go down")
         player_location[1] -= 1
-    else:
-        print("Not i'm confused like MUSC")
 
     if player_location[0] < 0:
         print("Collision: REDGE")
