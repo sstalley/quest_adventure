@@ -1,8 +1,8 @@
-import matplotlib.pyplot as plt
+# import matplotlib.pyplot as plt
 import numpy as np
 
 game_name = "Quest Adventure"
-print(f"Welcome to {game_name}")
+#print(f"Welcome to {game_name}")
 #name = input("Enter Player Name: ")
 name = "MUSC"
 print(f"Welcome {name} to {game_name}!")
@@ -27,11 +27,12 @@ temperatures = np.load("temps.npy")
 lmap = np.load("world.npy")
 
 def graph_temps():
-    plt.title("Temperatures of Quest Adventure")
-    plt.plot(distance_from_start, temperatures, color="r")
-    plt.xlabel("location index")
-    plt.ylabel("Temperature (F)")
-    plt.show()
+    pass
+#     plt.title("Temperatures of Quest Adventure")
+#     plt.plot(distance_from_start, temperatures, color="r")
+#     plt.xlabel("location index")
+#     plt.ylabel("Temperature (F)")
+#     plt.show()
 
 player_location = [0, 0]
 
